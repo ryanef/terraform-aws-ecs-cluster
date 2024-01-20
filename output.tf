@@ -1,8 +1,8 @@
 output "cluster_id" {
-  value = {for k,v in aws_ecs_cluster.cluster : k => v.id}
-}
+  value = try({for k,v in aws_ecs_cluster.cluster : k => v.id}, {})
+  }
 output "cluster_arn" {
-  value = {for k,v in aws_ecs_cluster.cluster : k => v.arn}
+  value = try({for k,v in aws_ecs_cluster.cluster : k => v.arn}, {})
 }
 
 output "namespace_id" {
